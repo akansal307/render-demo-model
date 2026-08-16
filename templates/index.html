@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymized Credit Card Fraud ML Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .btn-sample {
+            display: block;
+            margin: 0 auto 25px auto;
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn-sample:hover {
+            background-color: #5a6268;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .btn-submit {
+            grid-column: 1 / -1;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-submit:hover {
+            background-color: #0056b3;
+        }
+        .result-box {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-left: 5px solid #28a745;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Anonymized Credit Card Fraud ML Simulator</h2>
+    <button type="button" class="btn-sample" onclick="fillSampleData()">⚡ Fill Sample Data</button>
+    
+    <form action="/predict" method="POST">
+        <div class="grid-container">
+            <div class="form-group">
+                <label for="Time">Time</label>
+                <input type="number" step="any" name="Time" id="Time" required>
+            </div>
+            
+            <!-- V1 to V28 Inputs -->
+            <div class="form-group"><label for="V1">V1</label><input type="number" step="any" name="V1" id="V1" required></div>
+            <div class="form-group"><label for="V2">V2</label><input type="number" step="any" name="V2" id="V2" required></div>
+            <div class="form-group"><label for="V3">V3</label><input type="number" step="any" name="V3" id="V3" required></div>
+            <div class="form-group"><label for="V4">V4</label><input type="number" step="any" name="V4" id="V4" required></div>
+            <div class="form-group"><label for="V5">V5</label><input type="number" step="any" name="V5" id="V5" required></div>
+            <div class="form-group"><label for="V6">V6</label><input type="number" step="any" name="V6" id="V6" required></div>
+            <div class="form-group"><label for="V7">V7</label><input type="number" step="any" name="V7" id="V7" required></div>
+            <div class="form-group"><label for="V8">V8</label><input type="number" step="any" name="V8" id="V8" required></div>
+            <div class="form-group"><label for="V9">V9</label><input type="number" step="any" name="V9" id="V9" required></div>
+            <div class="form-group"><label for="V10">V10</label><input type="number" step="any" name="V10" id="V10" required></div>
+            <div class="form-group"><label for="V11">V11</label><input type="number" step="any" name="V11" id="V11" required></div>
+            <div class="form-group"><label for="V12">V12</label><input type="number" step="any" name="V12" id="V12" required></div>
+            <div class="form-group"><label for="V13">V13</label><input type="number" step="any" name="V13" id="V13" required></div>
+            <div class="form-group"><label for="V14">V14</label><input type="number" step="any" name="V14" id="V14" required></div>
+            <div class="form-group"><label for="V15">V15</label><input type="number" step="any" name="V15" id="V15" required></div>
+            <div class="form-group"><label for="V16">V16</label><input type="number" step="any" name="V16" id="V16" required></div>
+            <div class="form-group"><label for="V17">V17</label><input type="number" step="any" name="V17" id="V17" required></div>
+            <div class="form-group"><label for="V18">V18</label><input type="number" step="any" name="V18" id="V18" required></div>
+            <div class="form-group"><label for="V19">V19</label><input type="number" step="any" name="V19" id="V19" required></div>
+            <div class="form-group"><label for="V20">V20</label><input type="number" step="any" name="V20" id="V20" required></div>
+            <div class="form-group"><label for="V21">V21</label><input type="number" step="any" name="V21" id="V21" required></div>
+            <div class="form-group"><label for="V22">V22</label><input type="number" step="any" name="V22" id="V22" required></div>
+            <div class="form-group"><label for="V23">V23</label><input type="number" step="any" name="V23" id="V23" required></div>
+            <div class="form-group"><label for="V24">V24</label><input type="number" step="any" name="V24" id="V24" required></div>
+            <div class="form-group"><label for="V25">V25</label><input type="number" step="any" name="V25" id="V25" required></div>
+            <div class="form-group"><label for="V26">V26</label><input type="number" step="any" name="V26" id="V26" required></div>
+            <div class="form-group"><label for="V27">V27</label><input type="number" step="any" name="V27" id="V27" required></div>
+            <div class="form-group"><label for="V28">V28</label><input type="number" step="any" name="V28" id="V28" required></div>
+
+            <div class="form-group">
+                <label for="Amount">Amount ($)</label>
+                <input type="number" step="any" name="Amount" id="Amount" required>
+            </div>
+
+            <button type="submit" class="btn-submit">Predict Transaction Status</button>
+        </div>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result-box">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function fillSampleData() {
+        const sampleData = {
+            "Time": 406.0,
+            "V1": -1.359807, "V2": -0.072781, "V3": 2.536347, "V4": 1.378155, 
+            "V5": -0.338321, "V6": 0.462388, "V7": 0.239599, "V8": 0.098698, 
+            "V9": 0.363787, "V10": 0.090794, "V11": -0.551600, "V12": -0.617801, 
+            "V13": -0.991390, "V14": -0.311169, "V15": 1.468177, "V16": -0.470401, 
+            "V17": 0.207971, "V18": 0.025791, "V19": 0.403993, "V20": 0.251412, 
+            "V21": -0.018307, "V22": 0.277838, "V23": -0.110474, "V24": 0.066928, 
+            "V25": 0.128539, "V26": -0.189115, "V27": 0.133558, "V28": -0.021053,
+            "Amount": 149.62
+        };
+
+        for (const key in sampleData) {
+            const element = document.getElementById(key);
+            if (element) {
+                element.value = sampleData[key];
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
